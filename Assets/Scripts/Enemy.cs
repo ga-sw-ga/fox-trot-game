@@ -6,7 +6,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     private const float GROUND_HEIGHT = -1.5f,
-                        DESCEND_SPEED = 0.25f,
+                        DESCEND_SPEED = 0.2f,
                         SIDE_SPEED = 2f;
     
     private Rigidbody rb;
@@ -16,6 +16,14 @@ public class Enemy : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         animator = GetComponentInChildren<Animator>();
+    }
+
+    private void Update()
+    {
+        if (!transform.GetChild(0).gameObject.activeSelf)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void FixedUpdate()

@@ -16,8 +16,14 @@ public class JumpDetectorTrigger : MonoBehaviour
     {
         // if (other.gameObject.CompareTag("Platform") || other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag())
         // {
-            player.canJump = true;
+        //    player.canJump = true;
         // }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.CompareTag("Platform"))
+            player.canJump = true;
     }
 
     private void OnTriggerExit(Collider other)

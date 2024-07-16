@@ -8,7 +8,7 @@ public class GirlToy : MonoBehaviour
     public static GirlToy instance;
     
     private const float OPERATE_DEFAULT_TIME = 3f,
-                        OPERATION_SPEED = 1f;
+                        OPERATION_SPEED = 2f;
     
     private Rigidbody rb;
     private Animator animator;
@@ -43,6 +43,14 @@ public class GirlToy : MonoBehaviour
             {
                 animator.SetBool("IsWalking", false);
             }
+        }
+
+        if (transform.position.x > 14f)
+        {
+            Debug.Log("YOU WON!");
+            GameObject.Find("CanvasWin").transform.GetChild(0).GetComponent<CanvasGroup>().alpha = 1;
+            AudioManager.instance.musicSource.Stop();
+            Invoke("ResetGame", 3f);
         }
     }
 
